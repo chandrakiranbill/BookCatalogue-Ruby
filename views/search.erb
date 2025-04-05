@@ -1,0 +1,56 @@
+<div>
+  <h2>Search Books</h2>
+  <p class="subheading">Find books in your catalog</p>
+  
+  <div class="search-form">
+    <form action="/search" method="get">
+      <div class="search-select">
+        <label for="filter">Search by</label>
+        <select id="filter" name="filter" required>
+          <option value="title" <%= @filter == 'title' ? 'selected' : '' %>>Title</option>
+          <option value="author" <%= @filter == 'author' ? 'selected' : '' %>>Author</option>
+          <option value="genre" <%= @filter == 'genre' ? 'selected' : '' %>>Genre</option>
+        </select>
+      </div>
+      
+      <div class="search-input">
+        <label for="keyword">Keyword</label>
+        <input type="text" id="keyword" name="keyword" value="<%= @keyword %>" required>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+  
+  <% if @searched && @results.empty? %>
+    <p>No books found matching your search criteria.</p>
+  <% elsif @searched %>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Genre</th>
+          <th>Year</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @results.each do |book| %>
+          <tr>
+            <td><%= book.title %></td>
+            <td><%= book.author %></td>
+            <td><%= book.genre %></td>
+            <td><%= book.year %></td>
+            <td>
+              <form action="/remove" method="post" style="display: inline;">
+                <input type="hidden" name="title" value="<%= book.title %>">
+                <button type="submit" class="remove-btn" onclick="return confirm('Are you sure you want to remove this book?')">Remove</button>
+              </form>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

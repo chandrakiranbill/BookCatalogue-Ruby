@@ -1,0 +1,46 @@
+<div>
+  <h2>Book Catalog</h2>
+  <p class="subheading">View and manage your complete book collection</p>
+  
+  <% if session[:success] %>
+    <div class="success-notification">
+      <div class="success-content">
+        <h3>Success!</h3>
+        <p><%= session[:success] %></p>
+      </div>
+    </div>
+    <% session[:success] = nil %>
+  <% end %>
+  
+  <% if @books.empty? %>
+    <p>No books in your catalog yet. <a href="/add">Add your first book</a>.</p>
+  <% else %>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Genre</th>
+          <th>Year</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @books.each do |book| %>
+          <tr>
+            <td><%= book.title %></td>
+            <td><%= book.author %></td>
+            <td><%= book.genre %></td>
+            <td><%= book.year %></td>
+            <td>
+              <form action="/remove" method="post" style="display: inline;">
+                <input type="hidden" name="title" value="<%= book.title %>">
+                <button type="submit" class="remove-btn" onclick="return confirm('Are you sure you want to remove this book?')">Remove</button>
+              </form>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

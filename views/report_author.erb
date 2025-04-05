@@ -1,0 +1,32 @@
+<div>
+  <h2>Books by Author</h2>
+  <p class="subheading">Explore your books organized by author</p>
+  
+  <% if @books_by_author.empty? %>
+    <p>No books in your catalog yet. <a href="/add">Add your first book</a>.</p>
+  <% else %>
+    <% @books_by_author.each do |author, books| %>
+      <div class="report-section">
+        <h3 class="report-title"><%= author %> (<%= books.length %>)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Genre</th>
+              <th>Year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% books.each do |book| %>
+              <tr>
+                <td><%= book.title %></td>
+                <td><%= book.genre %></td>
+                <td><%= book.year %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  <% end %>
+</div>
