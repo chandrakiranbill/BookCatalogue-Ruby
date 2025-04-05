@@ -1,14 +1,10 @@
 require_relative 'book'
 
-class CatalogSystem
+class Catalog
   attr_reader :catalog
   
   def initialize
     @catalog = []
-    # Add sample books shown in screenshots
-    @catalog << Book.new("Concepts of Programming Languages, 12th Edition", "Robert W. Sebesta", "textbook", "2025")
-    @catalog << Book.new("The grass is Always Greener", "Jeffrey Archer", "Novel", "2020")
-    @catalog << Book.new("A boy at seven", "steven", "novel", "2021")
   end
   
   def add_book(title, author, genre, year)

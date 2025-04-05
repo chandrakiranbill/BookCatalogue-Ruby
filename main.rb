@@ -1,4 +1,4 @@
-require_relative 'catalog_system'
+require_relative 'catalog'
 
 def add_book(catalog)
   print "Enter title: "
@@ -75,7 +75,7 @@ def list_books(catalog)
 end
 
 def main_menu
-  catalog = CatalogSystem.new
+  catalog = Catalog.new
   
   loop do
     puts "\n=== Book Cataloging System ==="
