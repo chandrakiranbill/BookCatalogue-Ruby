@@ -2,13 +2,25 @@
 
 To run the web interface version of the Book Catalog System: 
 
-1. Open a terminal 
+1. Make sure you have ruby(3<=) and required dependencies installed
 
-2. Navigate to the directory containing the project files 
+      brew install rbenv ruby-build
+      rbenv init
+      add this line to your .zshrc : eval "$(rbenv init - zsh)"
+      source ~/.zshrc
 
-  		Install required gems (first time only): 
+      rbenv install 3.2.2
+      rbenv global 3.2.2
+      ruby -v (To verify the version)
+      gem install bundler
+      gem install sinatra
+      gem install rack
+      bundle add rackup puma
 
-      bundle install 
+
+2. Navigate to the directory containing the project files and install required gems (first time only): 
+
+     bundle install 
 
 3. Start the web server: 
 
