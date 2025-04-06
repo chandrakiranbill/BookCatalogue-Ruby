@@ -12,10 +12,10 @@ To run the web interface version of the Book Catalog System:
 
 3. Start the web server: 
 
-    ruby web_app.rb 
+      ruby web_app.rb 
 
 4. Open a web browser and navigate to: 
 
-    http://localhost:8080 
+      http://localhost:8080 
 
 5. Use the web interface to interact with the catalog system 
